@@ -4,6 +4,7 @@ import './Quiz.scss'
 import ProgressBar from './ProgressBar'
 import QuestionCounter from './QuestionCounter'
 import Category from './Category'
+import DifficultyRating from './DifficultyRating'
 import questions from '../questions.json'
 
 function Quiz () {
@@ -13,6 +14,7 @@ function Quiz () {
     <ProgressBar maxQuestions={questions.length} currentQuestion={currentRound} />
     <QuestionCounter maxQuestions={questions.length} currentQuestion={currentRound} />
     <Category text={questions[0].category} />
+    <DifficultyRating difficulty={questions[0].difficulty} />
   </div>
 }
 
