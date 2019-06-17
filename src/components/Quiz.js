@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
+import 'normalize.css'
+import './Quiz.scss'
 import ProgressBar from './ProgressBar'
 import QuestionCounter from './QuestionCounter'
-import './Quiz.scss'
 import questions from '../questions.json'
 
 function Quiz () {
