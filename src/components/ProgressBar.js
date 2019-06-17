@@ -1,13 +1,15 @@
 import React from 'react'
 
 function QuestionBar (props) {
-  const width = getWidth(props.maxQuestions, props.currentQuestion)
+  const style = getStyle(props.currentQuestion, props.maxQuestions)
 
-  return <div className='quiz__progress-bar' style={{ width }} />
+  return <div className='quiz__progress-bar' style={style} />
 }
 
-function getWidth (total, current) {
-  return (current / total * 100) + 'vw'
+export function getStyle (current, total) {
+  return {
+    width: (current / total * 100) + 'vw'
+  }
 }
 
 export default QuestionBar
