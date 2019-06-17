@@ -6,7 +6,7 @@ import QuestionCounter from './QuestionCounter'
 import questions from '../questions.json'
 
 function Quiz () {
-  const [ currentRound ] = useState(0)
+  const [ currentRound ] = useState(10)
 
   return <div className='quiz'>
     <ProgressBar maxQuestions={questions.length} currentQuestion={currentRound} />
