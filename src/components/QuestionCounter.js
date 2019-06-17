@@ -1,7 +1,8 @@
 import React from 'react'
 
 function QuestionCounter (props) {
-  return <h1>Q</h1>
+  const { maxQuestions, currentQuestion } = props
+  return <h1>Question {currentQuestion} of {maxQuestions}</h1>
 }
 
 export default QuestionCounter
