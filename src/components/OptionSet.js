@@ -4,7 +4,8 @@ import Option from './Option'
 function OptionSet (props) {
   const { correctAnswer, incorrectAnswers, handleCorrect, handleIncorrect, type } = props
   const correctIndex = getRandom(type)
-  const options = incorrectAnswers.splice(correctIndex, 0, correctAnswer)
+  const options = Array.from(incorrectAnswers)
+  options.splice(correctIndex, 0, correctAnswer)
 
   return <div>
     {options.map(function (val, i) {
