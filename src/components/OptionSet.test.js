@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import OptionSet from './OptionSet'
+import OptionSet, { getRandom } from './OptionSet'
 import Option from './Option'
 
 const correctAnswer = 'Dirk%20the%20Daring'
@@ -47,4 +47,12 @@ it('should use the right handler on each option', function () {
   expect(handleIncorrectMock.mock.calls.legth).toEqual(0)
   incorrectOptions.simulate('click')
   expect(handleIncorrectMock.mock.calls.legth).toEqual(1)
+})
+
+it('should generate a random number in range', function () {
+  const randomBoolean = getRandom('boolean')
+  expect(randomBoolean).toBeLessThan(2)
+
+  const randomMultiple = getRandom('multiple')
+  expect(randomMultiple).toBeLessThan(4)
 })
