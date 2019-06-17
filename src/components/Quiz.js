@@ -3,6 +3,7 @@ import 'normalize.css'
 import './Quiz.scss'
 import ProgressBar from './ProgressBar'
 import QuestionCounter from './QuestionCounter'
+import Category from './Category'
 import questions from '../questions.json'
 
 function Quiz () {
@@ -11,6 +12,7 @@ function Quiz () {
   return <div className='quiz'>
     <ProgressBar maxQuestions={questions.length} currentQuestion={currentRound} />
     <QuestionCounter maxQuestions={questions.length} currentQuestion={currentRound} />
+    <Category text={questions[0].category} />
   </div>
 }
 
