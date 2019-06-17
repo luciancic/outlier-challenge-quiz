@@ -1,7 +1,8 @@
 import React from 'react'
 
 function Category (props) {
-  return <p className='quiz__category'>{props.text}</p>
+  const text = decodeURIComponent(props.text)
+  return <p className='quiz__category'>{text}</p>
 }
 
 export default Category
