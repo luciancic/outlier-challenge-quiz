@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import ProgressBar from './ProgressBar'
+import QuestionCounter from './QuestionCounter'
 import './Quiz.scss'
 import questions from '../questions.json'
 
@@ -8,6 +9,7 @@ function Quiz () {
 
   return <div className='quiz'>
     <ProgressBar maxQuestions={questions.length} currentQuestion={currentRound} />
+    <QuestionCounter maxQuestions={questions.length} currentQuestion={currentRound} />
   </div>
 }
 
