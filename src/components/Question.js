@@ -1,7 +1,8 @@
 import React from 'react'
 
 function Question (props) {
-  return <p>{props.text}</p>
+  const text = decodeURIComponent(props.text)
+  return <p>{text}</p>
 }
 
 export default Question
