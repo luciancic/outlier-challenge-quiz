@@ -14,8 +14,9 @@ const handleIncorrectMock = jest.fn()
 
 it('should contain all the options', function () {
   const wrapper = shallow(<OptionSet
-    correct={correctAnswer}
-    incorrect={incorrectAnswers}
+    type='multiple'
+    correctAnswer={correctAnswer}
+    incorrectAnswers={incorrectAnswers}
     handleCorrect={handleCorrectMock}
     handleIncorrect={handleIncorrectMock} />)
   const options = wrapper.find(Option)
@@ -31,8 +32,9 @@ it('should contain all the options', function () {
 
 it('should use the right handler on each option', function () {
   const wrapper = shallow(<OptionSet
-    correct={correctAnswer}
-    incorrect={incorrectAnswers}
+    type='multiple'
+    correctAnswer={correctAnswer}
+    incorrectAnswers={incorrectAnswers}
     handleCorrect={handleCorrectMock}
     handleIncorrect={handleIncorrectMock} />)
 
