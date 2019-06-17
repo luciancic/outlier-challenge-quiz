@@ -1,0 +1,9 @@
+.quiz {
+  height: 100vh;
+  // border: solid #e3e3e3 1px;
+
+  &__progress-bar{
+    height: 12px;
+    background-color: #a9aaa9;
+  }
+}
