@@ -10,10 +10,17 @@ html {
 
 .quiz {
   height: 100vh;
-  // border: solid #e3e3e3 1px;
+  padding: 2em 4em;
 
   &__progress-bar{
+    position: absolute;
+    top: 0px;
+    left: 0px;
     height: 12px;
     background-color: #a9aaa9;
+  }
+
+  &__question-counter {
+    margin: 0;
   }
 }
