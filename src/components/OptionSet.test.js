@@ -3,11 +3,11 @@ import { shallow } from 'enzyme'
 import OptionSet from './OptionSet'
 import Option from './Option'
 
-const correctAnswer = "Dirk%20the%20Daring"
+const correctAnswer = 'Dirk%20the%20Daring'
 const incorrectAnswers = [
-  "Arthur",
-  "Sir%20Toby%20Belch",
-  "Guy%20of%20Gisbourne"
+  'Arthur',
+  'Sir%20Toby%20Belch',
+  'Guy%20of%20Gisbourne'
 ]
 const handleCorrectMock = jest.fn()
 const handleIncorrectMock = jest.fn()
