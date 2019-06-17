@@ -23,4 +23,12 @@ html {
   &__question-counter {
     margin: 0;
   }
+
+  &__star {
+    color: #cccccc;
+
+    &--darken {
+      color: #000;
+    }
+  }
 }
