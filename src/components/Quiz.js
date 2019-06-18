@@ -11,10 +11,15 @@ import NextQuestion from './NextQuestion'
 import questions from '../questions.json'
 
 function Quiz () {
-  const [ currentRound ] = useState(10)
+  const [ currentRound, setCurrentRound ] = useState(10)
   const [ , setScore ] = useState(0)
   const [ answered, setAnswered ] = useState(false)
   const q = questions[0]
+
+  function nextQuestion () {
+    setCurrentRound(currentRound + 1)
+    setAnswered(false)
+  }
 
   return <div className='quiz'>
     <ProgressBar maxQuestions={questions.length} currentQuestion={currentRound} />
@@ -30,7 +35,7 @@ function Quiz () {
       handleCorrect={setScore}
       handleIncorrect={setScore}
       type={q.type} />
-    { answered && <NextQuestion /> }
+    { answered && <NextQuestion handler={nextQuestion} /> }
   </div>
 }
 
