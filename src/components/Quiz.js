@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import 'normalize.css'
 import './Quiz.scss'
-import ProgressBar from './ProgressBar'
+import TopProgressBar from './TopProgressBar'
 import QuestionCounter from './QuestionCounter'
 import Category from './Category'
 import DifficultyRating from './DifficultyRating'
@@ -22,7 +22,7 @@ function Quiz () {
   }
 
   return <div className='quiz'>
-    <ProgressBar maxQuestions={questions.length} currentQuestion={currentRound} />
+    <TopProgressBar maxQuestions={questions.length} currentQuestion={currentRound} />
     <QuestionCounter maxQuestions={questions.length} currentQuestion={currentRound} />
     <Category text={q.category} />
     <DifficultyRating difficulty={q.difficulty} />
