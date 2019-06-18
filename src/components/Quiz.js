@@ -20,7 +20,7 @@ function Quiz () {
     <Category text={q.category} />
     <DifficultyRating difficulty={q.difficulty} />
     <Question text={q.question} />
-    <OptionSet correctAnswer={q.correct_answer} incorrectAnswers={q.incorrect_answers} handleCorrect={setScore} handleIncorrect={setScore} />
+    <OptionSet correctAnswer={q.correct_answer} incorrectAnswers={q.incorrect_answers} handleCorrect={setScore} handleIncorrect={setScore} type={q.type} />
   </div>
 }
 
