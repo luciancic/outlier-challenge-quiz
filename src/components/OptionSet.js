@@ -7,10 +7,18 @@ function OptionSet (props) {
   const correctIndex = getRandom(type)
   const options = Array.from(incorrectAnswers)
   options.splice(correctIndex, 0, correctAnswer)
+  function createHandler (handler) {
+    return function () {
+      if (!answered) {
+        handler()
+        setAnswered(true)
+      }
+    }
+  }
 
   return <div>
     {options.map(function (val, i) {
-      return <Option key={i} handler={i === correctIndex ? handleCorrect : handleIncorrect} text={val} />
+      return <Option key={i} handler={createHandler(i === correctIndex ? handleCorrect : handleIncorrect)} text={val} />
     })}
   </div>
 }
