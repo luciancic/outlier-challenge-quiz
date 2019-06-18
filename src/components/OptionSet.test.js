@@ -54,6 +54,35 @@ it('should not use score incrementer passed down if already answered', function 
   expect(handleIncorrectMock.mock.calls.length).toEqual(0)
 })
 
+it('should style chosen option', function () {
+  const correctOption = wrapper.find({ text: 'Dirk%20the%20Daring' })
+  expect(correctOption.prop('style')).toBeFalsy()
+  correctOption.simulate('click')
+  expect(correctOption.prop('style')).toEqual('chosen')
+})
+
+it('should style disabled options', function () {
+  const dirk = wrapper.find({ text: 'Dirk%20the%20Daring' })
+  const arthur = wrapper.find({ text: 'Arthur' })
+  const toby = wrapper.find({ text: 'Sir%20Toby%20Belch' })
+  const guy = wrapper.find({ text: 'Guy%20of%20Gisbourne' })
+
+  dirk.simulate('click')
+  expect(dirk.prop('style')).toEqual('chosen')
+  expect(arthur.prop('style')).toEqual('disabled')
+  expect(toby.prop('style')).toEqual('disabled')
+  expect(guy.prop('style')).toEqual('disabled')
+})
+
+it('should style missed option', function () {
+  const dirk = wrapper.find({ text: 'Dirk%20the%20Daring' })
+  const arthur = wrapper.find({ text: 'Arthur' })
+
+  arthur.simulate('click')
+  expect(arthur.prop('style')).toEqual('chosen')
+  expect(dirk.prop('style')).toEqual('missed')
+})
+
 it('should generate a random number in range', function () {
   const randomBoolean = getRandom('boolean')
   expect(randomBoolean).toBeLessThan(2)
