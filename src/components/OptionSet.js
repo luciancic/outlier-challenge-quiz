@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Option from './Option'
 
 function OptionSet (props) {
   const { correctAnswer, incorrectAnswers, handleCorrect, handleIncorrect, type } = props
+  const [ answered, setAnswered ] = useState(false)
   const correctIndex = getRandom(type)
   const options = Array.from(incorrectAnswers)
   options.splice(correctIndex, 0, correctAnswer)
