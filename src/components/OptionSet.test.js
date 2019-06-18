@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import OptionSet, { getRandom } from './OptionSet'
 import Option from './Option'
 
@@ -9,12 +9,12 @@ const incorrectAnswers = [
   'Sir%20Toby%20Belch',
   'Guy%20of%20Gisbourne'
 ]
-const handleCorrectMock = jest.fn()
-const handleIncorrectMock = jest.fn()
-let wrapper
+let handleCorrectMock, handleIncorrectMock, wrapper
 
 beforeEach(function () {
-  wrapper = shallow(<OptionSet
+  handleCorrectMock = jest.fn()
+  handleIncorrectMock = jest.fn()
+  wrapper = mount(<OptionSet
     type='multiple'
     correctAnswer={correctAnswer}
     incorrectAnswers={incorrectAnswers}
