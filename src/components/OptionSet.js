@@ -4,6 +4,7 @@ import Option from './Option'
 function OptionSet (props) {
   const { correctAnswer, incorrectAnswers, handleCorrect, handleIncorrect, type } = props
   const [ answered, setAnswered ] = useState(false)
+  const [ chosenOption ] = useState(null)
   const correctIndex = getRandom(type)
   const options = Array.from(incorrectAnswers)
   options.splice(correctIndex, 0, correctAnswer)
@@ -16,9 +17,21 @@ function OptionSet (props) {
     }
   }
 
+  function getStyle (i) {
+    if (answered) {
+      return i === chosenOption ? 'chosen'
+        : (i !== chosenOption) && (i === correctIndex) ? 'missed'
+          : 'disabled'
+    }
+  }
+
   return <div>
     {options.map(function (val, i) {
-      return <Option key={i} handler={createHandler(i === correctIndex ? handleCorrect : handleIncorrect)} text={val} />
+      return <Option
+        key={i}
+        handler={createHandler(i === correctIndex ? handleCorrect : handleIncorrect)}
+        text={val}
+        style={getStyle(i)} />
     })}
   </div>
 }
