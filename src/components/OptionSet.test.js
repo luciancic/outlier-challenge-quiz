@@ -42,26 +42,26 @@ it('should switch answered piece of state', function () {
 })
 
 it('should use the right handler on each option', function () {
-  const correctOption = wrapper.find({ correct: true })
+  const correctOption = wrapper.find({ handler: handleCorrectMock })
   expect(correctOption.prop('handler')).toEqual(handleCorrectMock)
-  expect(handleCorrectMock.mock.calls.legth).toEqual(0)
+  expect(handleCorrectMock.mock.calls.length).toEqual(0)
   correctOption.simulate('click')
-  expect(handleCorrectMock.mock.calls.legth).toEqual(1)
+  expect(handleCorrectMock.mock.calls.length).toEqual(1)
 
-  const incorrectOptions = wrapper.find({ correct: false })
+  const incorrectOptions = wrapper.find({ handler: handleIncorrectMock })[0]
   expect(incorrectOptions.prop('handler')).toEqual(handleIncorrectMock)
-  expect(handleIncorrectMock.mock.calls.legth).toEqual(0)
+  expect(handleIncorrectMock.mock.calls.length).toEqual(0)
   incorrectOptions.simulate('click')
-  expect(handleIncorrectMock.mock.calls.legth).toEqual(1)
+  expect(handleIncorrectMock.mock.calls.length).toEqual(1)
 })
 
 it('should not use score incrementer passed down if already answered', function () {
   const correctOption = wrapper.find({ handler: handleCorrectMock })[0]
-  expect(handleCorrectMock.mock.calls.legth).toEqual(0)
+  expect(handleCorrectMock.mock.calls.length).toEqual(0)
   correctOption.simulate('click')
-  expect(handleCorrectMock.mock.calls.legth).toEqual(1)
+  expect(handleCorrectMock.mock.calls.length).toEqual(1)
   correctOption.simulate('click')
-  expect(handleCorrectMock.mock.calls.legth).toEqual(1)
+  expect(handleCorrectMock.mock.calls.length).toEqual(1)
 })
 
 it('should generate a random number in range', function () {
