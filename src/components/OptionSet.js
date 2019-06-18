@@ -5,9 +5,11 @@ function OptionSet (props) {
   const { correctAnswer, incorrectAnswers, handleCorrect, handleIncorrect, type } = props
   const [ answered, setAnswered ] = useState(false)
   const [ chosenOption, setChosenOption ] = useState(null)
-  const correctIndex = getRandom(type)
+  const [ correctIndex ] = useState(getRandom(type))
+
   const options = Array.from(incorrectAnswers)
   options.splice(correctIndex, 0, correctAnswer)
+
   function createHandler (i, handler) {
     return function () {
       if (!answered) {
