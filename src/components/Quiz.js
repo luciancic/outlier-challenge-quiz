@@ -8,6 +8,7 @@ import DifficultyRating from './DifficultyRating'
 import Question from './Question'
 import OptionSet from './OptionSet'
 import NextQuestion from './NextQuestion'
+import ScoreMeter from './ScoreMeter'
 import questions from '../questions.json'
 
 function Quiz () {
@@ -36,6 +37,7 @@ function Quiz () {
       handleIncorrect={setScore}
       type={q.type} />
     { answered && <NextQuestion handler={nextQuestion} /> }
+    <ScoreMeter />
   </div>
 }
 
