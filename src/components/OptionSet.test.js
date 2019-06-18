@@ -34,6 +34,13 @@ it('should contain all the options', function () {
   expect(incorrectOptions.legth).toEqual(3)
 })
 
+it('should switch answered piece of state', function () {
+  expect(wrapper.state('answere')).toBe(false)
+
+  wrapper.find(Option)[0].simulate('click')
+  expect(wrapper.state('answere')).toBe(true)
+})
+
 it('should use the right handler on each option', function () {
   const correctOption = wrapper.find({ correct: true })
   expect(correctOption.prop('handler')).toEqual(handleCorrectMock)
@@ -46,6 +53,15 @@ it('should use the right handler on each option', function () {
   expect(handleIncorrectMock.mock.calls.legth).toEqual(0)
   incorrectOptions.simulate('click')
   expect(handleIncorrectMock.mock.calls.legth).toEqual(1)
+})
+
+it('should not use score incrementer passed down if already answered', function () {
+  const correctOption = wrapper.find({ handler: handleCorrectMock })[0]
+  expect(handleCorrectMock.mock.calls.legth).toEqual(0)
+  correctOption.simulate('click')
+  expect(handleCorrectMock.mock.calls.legth).toEqual(1)
+  correctOption.simulate('click')
+  expect(handleCorrectMock.mock.calls.legth).toEqual(1)
 })
 
 it('should generate a random number in range', function () {
