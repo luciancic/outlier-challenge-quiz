@@ -25,20 +25,6 @@ beforeEach(function () {
 it('should contain all the options', function () {
   const options = wrapper.find(Option)
   expect(options.length).toEqual(4)
-
-  const correctOption = options.find({ correct: true })
-  expect(correctOption.length).toEqual(1)
-  expect(correctOption.text()).toEqual('Dirk the Daring')
-
-  const incorrectOptions = options.find({ correct: false })
-  expect(incorrectOptions.legth).toEqual(3)
-})
-
-it('should switch answered piece of state', function () {
-  expect(wrapper.state('answere')).toBe(false)
-
-  wrapper.find(Option)[0].simulate('click')
-  expect(wrapper.state('answere')).toBe(true)
 })
 
 it('should use the correct handler for the correct option', function () {
