@@ -7,6 +7,7 @@ import Category from './Category'
 import DifficultyRating from './DifficultyRating'
 import Question from './Question'
 import OptionSet from './OptionSet'
+import NextQuestion from './NextQuestion'
 import questions from '../questions.json'
 
 function Quiz () {
@@ -29,6 +30,7 @@ function Quiz () {
       handleCorrect={setScore}
       handleIncorrect={setScore}
       type={q.type} />
+    { answered && <NextQuestion /> }
   </div>
 }
 
