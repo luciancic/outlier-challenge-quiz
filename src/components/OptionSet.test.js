@@ -9,12 +9,15 @@ const incorrectAnswers = [
   'Sir%20Toby%20Belch',
   'Guy%20of%20Gisbourne'
 ]
-let handleCorrectMock, handleIncorrectMock, wrapper
+let handleCorrectMock, handleIncorrectMock, setAnswered, wrapper
 
 beforeEach(function () {
   handleCorrectMock = jest.fn()
   handleIncorrectMock = jest.fn()
+  setAnswered = jest.fn()
   wrapper = mount(<OptionSet
+    answered={false}
+    setAnswered={setAnswered}
     type='multiple'
     correctAnswer={correctAnswer}
     incorrectAnswers={incorrectAnswers}
@@ -49,6 +52,7 @@ it('should not use score incrementer passed down if already answered', function 
   correctOption.simulate('click')
   expect(handleCorrectMock.mock.calls.length).toEqual(1)
   expect(handleIncorrectMock.mock.calls.length).toEqual(0)
+  wrapper.setProps({ answered: true })
   correctOption.simulate('click')
   expect(handleCorrectMock.mock.calls.length).toEqual(1)
   expect(handleIncorrectMock.mock.calls.length).toEqual(0)
