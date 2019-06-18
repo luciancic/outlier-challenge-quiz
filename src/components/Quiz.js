@@ -11,8 +11,9 @@ import questions from '../questions.json'
 
 function Quiz () {
   const [ currentRound ] = useState(10)
-  const q = questions[0]
   const [ , setScore ] = useState(0)
+  const [ answered, setAnswered ] = useState(false)
+  const q = questions[0]
 
   return <div className='quiz'>
     <ProgressBar maxQuestions={questions.length} currentQuestion={currentRound} />
@@ -20,7 +21,14 @@ function Quiz () {
     <Category text={q.category} />
     <DifficultyRating difficulty={q.difficulty} />
     <Question text={q.question} />
-    <OptionSet correctAnswer={q.correct_answer} incorrectAnswers={q.incorrect_answers} handleCorrect={setScore} handleIncorrect={setScore} type={q.type} />
+    <OptionSet
+      answered={answered}
+      setAnswered={setAnswered}
+      correctAnswer={q.correct_answer}
+      incorrectAnswers={q.incorrect_answers}
+      handleCorrect={setScore}
+      handleIncorrect={setScore}
+      type={q.type} />
   </div>
 }
 
