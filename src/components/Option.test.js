@@ -2,6 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import Option from './Option'
 
+/* global it, expect, jest */
 it('should render text and handle click', function () {
   const text = 'Dirk%20the%20Daring'
   const handlerMock = jest.fn()

@@ -3,6 +3,7 @@ import { mount } from 'enzyme'
 import OptionSet, { getRandom } from './OptionSet'
 import Option from './Option'
 
+/* global it, expect, beforeEach, jest */
 const correctAnswer = 'Dirk%20the%20Daring'
 const incorrectAnswers = [
   'Arthur',

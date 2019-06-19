@@ -2,8 +2,9 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import ProgressBar, { getStyle } from './ProgressBar'
 
+/* global it, expect */
 it('should render', function () {
-  const wrapper = shallow(<ProgressBar currentQuestion={3} maxQuestions={10}/>)
+  const wrapper = shallow(<ProgressBar currentQuestion={3} maxQuestions={10} />)
   expect(wrapper).toBeTruthy()
 })
 
