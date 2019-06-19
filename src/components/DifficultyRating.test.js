@@ -3,6 +3,7 @@ import { shallow } from 'enzyme'
 import DifficultyRating from './DifficultyRating'
 import DifficultyStar from './DifficultyStar'
 
+/* global it, expect */
 it('should render 3 stars', function () {
   const wrapper = shallow(<DifficultyRating difficulty='easy' />)
   expect(wrapper.find(DifficultyStar).length).toBe(3)
