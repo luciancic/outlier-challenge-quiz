@@ -11,7 +11,7 @@ beforeEach(function () {
 })
 
 it('renders without crashing', () => { // eslint-disable-line
-  expect(quiz.baseElement).toBeInTheDOM()
+  expect(quiz.baseElement).toBeInTheDocument()
 })
 
 it('should style chosen option', function () {
