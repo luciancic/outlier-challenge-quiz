@@ -22,7 +22,7 @@ it('should navigate questions in order', function () {
   answerAndNext('Dirk the Daring')
 
   const question2 = 'What is the scientific name for modern day humans?'
-  expect(quiz.getByText(question1)).not.toBeInTheDocument()
+  expect(quiz.queryByText(question1)).toBe(null)
   expect(quiz.getByText(question2)).toBeInTheDocument()
 })
 
@@ -55,7 +55,7 @@ it('should style disabled options', function () {
   expect(toby).toHaveClass('quiz__option--disabled')
 })
 
-function answerAndNext(answer) {
+function answerAndNext (answer) {
   const option = quiz.getByText(answer)
   fireEvent.click(option)
   fireEvent.click(quiz.getByText('Next Question'))
