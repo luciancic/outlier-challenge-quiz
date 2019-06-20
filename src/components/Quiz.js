@@ -37,7 +37,7 @@ function Quiz () {
       handleIncorrect={setScore}
       type={q.type} />
     { answered && <NextQuestion handler={nextQuestion} /> }
-    <ScoreMeter />
+    <ScoreMeter maxRounds={20} mistakes={2} currentRound={4} />
   </div>
 }
 
