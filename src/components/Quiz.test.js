@@ -53,6 +53,48 @@ it('should remove feedback on next question', function () {
   expect(quiz.queryByText('Sorry!')).toBe(null)
 })
 
+it('should display the correct minimum score', function () {
+  const lowest = quiz.getByTitle('Lowest Possible')
+  expect(lowest).toHaveStyle('width: 0%')
+
+  fireEvent.click(quiz.getByText('Dirk the Daring'))
+  expect(lowest).toHaveStyle('width: 5%')
+
+  fireEvent.click(quiz.getByText('Next Question'))
+  expect(lowest).toHaveStyle('width: 5%')
+
+  fireEvent.click(quiz.getByText('Homo Erectus'))
+  expect(lowest).toHaveStyle('width: 5%')
+})
+
+it('should display the correct score in score bar', function () {
+  const current = quiz.getByTitle('Current Score')
+  expect(current).toHaveStyle('width: 100%')
+
+  fireEvent.click(quiz.getByText('Dirk the Daring'))
+  expect(current).toHaveStyle('width: 100%')
+
+  fireEvent.click(quiz.getByText('Next Question'))
+  expect(current).toHaveStyle('width: 100%')
+
+  fireEvent.click(quiz.getByText('Homo Erectus'))
+  expect(current).toHaveStyle('width: 50%')
+
+  fireEvent.click(quiz.getByText('Next Question'))
+  expect(current).toHaveStyle('width: 50%')
+})
+
+it('should display the correct score in score bar', function () {
+  const highest = quiz.getByTitle('Highest Possible')
+  expect(highest).toHaveStyle('width: 100%')
+
+  answerAndNext('Arthur')
+  expect(highest).toHaveStyle('width: 95%')
+
+  answerAndNext('Homo Sapiens')
+  expect(highest).toHaveStyle('width: 95%')
+})
+
 it('should style chosen option', function () {
   const dirk = quiz.getByText('Dirk the Daring')
   expect(dirk).toHaveClass('quiz__option')
