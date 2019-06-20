@@ -2,6 +2,7 @@ import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import Quiz from './Quiz'
 
+// Integration tests
 /* global it, expect, beforeEach */
 
 let quiz
@@ -12,6 +13,27 @@ beforeEach(function () {
 
 it('renders without crashing', () => { // eslint-disable-line
   expect(quiz.baseElement).toBeInTheDocument()
+})
+
+it('should navigate questions in order', function () {
+  const question1 = "What was the name of the hero in the 80s animated video game 'Dragon's Lair'?"
+  expect(quiz.getByText(question1)).toBeInTheDocument()
+
+  fireEvent.click(quiz.getByText('Dirk the Daring'))
+  fireEvent.click(quiz.getByText('Next Question'))
+
+  const question2 = 'What is the scientific name for modern day humans?'
+  expect(quiz.getByText(question1)).not.toBeInTheDocument()
+  expect(quiz.getByText(question2)).toBeInTheDocument()
+})
+
+it('should navigate questions in order', function () {
+  expect(quiz.getByText('Question 1 of 20')).toBeInTheDocument()
+
+  fireEvent.click(quiz.getByText('Dirk the Daring'))
+  fireEvent.click(quiz.getByText('Next Question'))
+
+  expect(quiz.getByText('Question 2 of 20')).toBeInTheDocument()
 })
 
 it('should style chosen option', function () {
