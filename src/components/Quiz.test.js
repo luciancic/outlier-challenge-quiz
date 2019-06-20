@@ -19,8 +19,7 @@ it('should navigate questions in order', function () {
   const question1 = "What was the name of the hero in the 80s animated video game 'Dragon's Lair'?"
   expect(quiz.getByText(question1)).toBeInTheDocument()
 
-  fireEvent.click(quiz.getByText('Dirk the Daring'))
-  fireEvent.click(quiz.getByText('Next Question'))
+  answerAndNext('Dirk the Daring')
 
   const question2 = 'What is the scientific name for modern day humans?'
   expect(quiz.getByText(question1)).not.toBeInTheDocument()
@@ -30,8 +29,7 @@ it('should navigate questions in order', function () {
 it('should navigate questions in order', function () {
   expect(quiz.getByText('Question 1 of 20')).toBeInTheDocument()
 
-  fireEvent.click(quiz.getByText('Dirk the Daring'))
-  fireEvent.click(quiz.getByText('Next Question'))
+  answerAndNext('Dirk the Daring')
 
   expect(quiz.getByText('Question 2 of 20')).toBeInTheDocument()
 })
@@ -56,3 +54,9 @@ it('should style disabled options', function () {
   expect(arthur).toHaveClass('quiz__option--disabled')
   expect(toby).toHaveClass('quiz__option--disabled')
 })
+
+function answerAndNext(answer) {
+  const option = quiz.getByText(answer)
+  fireEvent.click(option)
+  fireEvent.click(quiz.getByText('Next Question'))
+}
