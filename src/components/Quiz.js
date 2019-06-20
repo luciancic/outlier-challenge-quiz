@@ -7,19 +7,29 @@ import Category from './Category'
 import DifficultyRating from './DifficultyRating'
 import Question from './Question'
 import OptionSet from './OptionSet'
+import Feedback from './Feedback'
 import NextQuestion from './NextQuestion'
 import ScoreMeter from './ScoreMeter'
 import questions from '../questions.json'
 
 function Quiz () {
-  const [ currentRound, setCurrentRound ] = useState(10)
-  const [ , setScore ] = useState(0)
+  const [ currentRound, setCurrentRound ] = useState(1)
+  const [ mistakes, setMistakes ] = useState(0)
   const [ answered, setAnswered ] = useState(false)
-  const q = questions[0]
+  const [ roundCorrect, setRoundCorrect ] = useState(null)
+  const q = questions[currentRound - 1]
 
   function nextQuestion () {
     setCurrentRound(currentRound + 1)
     setAnswered(false)
+    setRoundCorrect(null)
+  }
+  function handleCorrect () {
+    setRoundCorrect(true)
+  }
+  function handleIncorrect () {
+    setMistakes(mistakes + 1)
+    setRoundCorrect(false)
   }
 
   return <div className='quiz'>
@@ -33,11 +43,12 @@ function Quiz () {
       setAnswered={setAnswered}
       correctAnswer={q.correct_answer}
       incorrectAnswers={q.incorrect_answers}
-      handleCorrect={setScore}
-      handleIncorrect={setScore}
+      handleCorrect={handleCorrect}
+      handleIncorrect={handleIncorrect}
       type={q.type} />
+    { roundCorrect !== null && <Feedback correct={roundCorrect} /> }
     { answered && <NextQuestion handler={nextQuestion} /> }
-    <ScoreMeter maxRounds={20} mistakes={2} currentRound={4} />
+    <ScoreMeter maxRounds={questions.length} mistakes={mistakes} currentRound={currentRound} />
   </div>
 }
 
