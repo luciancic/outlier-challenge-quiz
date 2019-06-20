@@ -6,13 +6,13 @@ function ScoreMeter (props) {
   const minScore = Math.floor(mistakes / maxRounds * 100)
   const maxScore = Math.floor((maxRounds - mistakes) / maxRounds * 100)
 
-  return <div>
-    <span>Score: {score}%</span>
-    <span>Max Score: {maxScore}%</span>
-    <div>
-      <span title='Lowest Possible' style={{ width: `${minScore}%` }} />
-      <span title='Current Score' style={{ width: `${score}%` }} />
-      <span title='Highest Possible' style={{ width: `${maxScore}%` }} />
+  return <div className='score'>
+    <span className='score__score'>Score: {score}%</span>
+    <span className='score__max-score'>Max Score: {maxScore}%</span>
+    <div className='score__bar score__bar--container'>
+      <div title='Highest Possible' className='score__bar score__bar-child score__bar-child--highest' style={{ width: `${maxScore}%` }} />
+      <div title='Current Score' className='score__bar score__bar-child score__bar-child--current' style={{ width: `${score}%` }} />
+      <div title='Lowest Possible' className='score__bar score__bar-child score__bar-child--lowest' style={{ width: `${minScore}%` }} />
     </div>
   </div>
 }
