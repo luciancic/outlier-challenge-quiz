@@ -53,4 +53,42 @@ html {
       background-color: white;
     }
   }
+
+  
+}
+
+.score {
+
+  &__max-score {
+    float: right;
+  }
+
+  &__bar {
+    height: 30px;
+
+    &--container {
+      border: solid black 1px;
+      border-radius: 7px;
+      margin-top: 4px;
+      overflow: hidden;
+    }
+
+    &-child {
+      height: 30px;
+
+      &--lowest {
+        margin-top: -30px;
+        background-color: black;
+      }
+
+      &--current {
+        margin-top: -30px;
+        background-color: #717171;
+      }
+
+      &--highest {
+        background-color: #d2d2d2;
+      }
+    }
+  }
 }

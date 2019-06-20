@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import 'normalize.css'
 import './Quiz.scss'
-import ProgressBar from './ProgressBar'
+import TopProgressBar from './TopProgressBar'
 import QuestionCounter from './QuestionCounter'
 import Category from './Category'
 import DifficultyRating from './DifficultyRating'
 import Question from './Question'
 import OptionSet from './OptionSet'
 import NextQuestion from './NextQuestion'
+import ScoreMeter from './ScoreMeter'
 import questions from '../questions.json'
 
 function Quiz () {
@@ -22,7 +23,7 @@ function Quiz () {
   }
 
   return <div className='quiz'>
-    <ProgressBar maxQuestions={questions.length} currentQuestion={currentRound} />
+    <TopProgressBar maxQuestions={questions.length} currentQuestion={currentRound} />
     <QuestionCounter maxQuestions={questions.length} currentQuestion={currentRound} />
     <Category text={q.category} />
     <DifficultyRating difficulty={q.difficulty} />
@@ -36,6 +37,7 @@ function Quiz () {
       handleIncorrect={setScore}
       type={q.type} />
     { answered && <NextQuestion handler={nextQuestion} /> }
+    <ScoreMeter maxRounds={20} mistakes={2} currentRound={4} />
   </div>
 }
 
