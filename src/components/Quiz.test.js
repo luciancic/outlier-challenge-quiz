@@ -46,6 +46,13 @@ it('should say sorry on incorrect answer', function () {
   expect(quiz.getByText('Sorry!')).toBeInTheDocument()
 })
 
+it('should remove feedback on next question', function () {
+  answerAndNext('Dirk the Daring')
+
+  expect(quiz.queryByText('Correct!')).toBe(null)
+  expect(quiz.queryByText('Sorry!')).toBe(null)
+})
+
 it('should style chosen option', function () {
   const dirk = quiz.getByText('Dirk the Daring')
   expect(dirk).toHaveClass('quiz__option')
