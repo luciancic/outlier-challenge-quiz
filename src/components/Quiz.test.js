@@ -26,12 +26,24 @@ it('should navigate questions in order', function () {
   expect(quiz.getByText(question2)).toBeInTheDocument()
 })
 
-it('should navigate questions in order', function () {
+it('should should display number of questions', function () {
   expect(quiz.getByText('Question 1 of 20')).toBeInTheDocument()
 
   answerAndNext('Dirk the Daring')
 
   expect(quiz.getByText('Question 2 of 20')).toBeInTheDocument()
+})
+
+it('should congratulate on correct answer', function () {
+  fireEvent.click(quiz.getByText('Dirk the Daring'))
+
+  expect(quiz.getByText('Correct!')).toBeInTheDocument()
+})
+
+it('should say sorry on incorrect answer', function () {
+  fireEvent.click(quiz.getByText('Arthur'))
+
+  expect(quiz.getByText('Sorry!')).toBeInTheDocument()
 })
 
 it('should style chosen option', function () {
