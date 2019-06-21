@@ -8,6 +8,11 @@ html {
   box-sizing: inherit;
 }
 
+#root {
+  height: 100vh;
+  border: 5px solid #ededed;
+}
+
 .quiz {
   height: 100vh;
   max-width: 570px;
@@ -18,8 +23,9 @@ html {
     position: absolute;
     top: 0px;
     left: 0px;
-    height: 12px;
+    height: 18px;
     background-color: #a9aaa9;
+    z-index: -1;
   }
 
   &__question-counter {
