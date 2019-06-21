@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Option from './Option'
 
 function OptionSet (props) {
-  const { answered, setAnswered, correctAnswer, incorrectAnswers, handleCorrect, handleIncorrect, type } = props
+  const { answered, correctAnswer, incorrectAnswers, handleCorrect, handleIncorrect, type } = props
   const [ chosenOption, setChosenOption ] = useState(null)
   const [ correctIndex ] = useState(getRandom(type))
 
@@ -14,7 +14,6 @@ function OptionSet (props) {
       if (!answered) {
         handler()
         setChosenOption(i)
-        setAnswered(true)
       }
     }
   }
