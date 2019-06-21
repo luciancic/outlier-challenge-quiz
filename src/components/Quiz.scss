@@ -96,6 +96,15 @@ html {
     font-size: 1.8em;
     font-weight: 600;
   }
+
+  &__next-question {
+    display: block;
+    border: black 1px solid;
+    border-radius: 5px;
+    margin: auto;
+    padding: 7px 25px;
+    font-weight: 600;
+  }
 }
 
 .score {
