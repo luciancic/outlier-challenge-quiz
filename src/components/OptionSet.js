@@ -26,7 +26,7 @@ function OptionSet (props) {
     }
   }
 
-  return <div>
+  return <div className='quiz__option-container'>
     {options.map(function (val, i) {
       return <Option
         key={i}
