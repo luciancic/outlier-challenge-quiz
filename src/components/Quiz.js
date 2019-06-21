@@ -35,20 +35,22 @@ function Quiz () {
 
   return <div className='quiz'>
     <TopProgressBar maxQuestions={maxQuestions} currentQuestion={currentRound} />
-    <QuestionCounter maxQuestions={maxQuestions} currentQuestion={currentRound} />
-    <Category text={category} />
-    <DifficultyRating difficulty={difficulty} />
-    <Question text={question} />
-    <OptionSet
-      answered={playerAnswered}
-      correctAnswer={correctAnswer}
-      incorrectAnswers={incorrectAnswers}
-      handleCorrect={() => dispatch('answer_correct')}
-      handleIncorrect={() => dispatch('answer_incorrect')}
-      type={type} />
-    { isAnswerCorrect !== null && <Feedback correct={isAnswerCorrect} /> }
-    { playerAnswered && <NextQuestion handler={() => dispatch('next_question')} /> }
-    <ScoreMeter score={score} minScore={minScore} maxScore={maxScore} />
+    <div className='quiz__content'>
+      <QuestionCounter maxQuestions={maxQuestions} currentQuestion={currentRound} />
+      <Category text={category} />
+      <DifficultyRating difficulty={difficulty} />
+      <Question text={question} />
+      <OptionSet
+        answered={playerAnswered}
+        correctAnswer={correctAnswer}
+        incorrectAnswers={incorrectAnswers}
+        handleCorrect={() => dispatch('answer_correct')}
+        handleIncorrect={() => dispatch('answer_incorrect')}
+        type={type} />
+      { isAnswerCorrect !== null && <Feedback correct={isAnswerCorrect} /> }
+      { playerAnswered && <NextQuestion handler={() => dispatch('next_question')} /> }
+      <ScoreMeter score={score} minScore={minScore} maxScore={maxScore} />
+    </div>
   </div>
 }
 

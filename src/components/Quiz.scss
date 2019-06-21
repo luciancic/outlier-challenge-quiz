@@ -14,10 +14,15 @@ html {
 }
 
 .quiz {
-  height: 100vh;
+  height: 100%;
   max-width: 570px;
   padding: 2em 3em;
   margin: auto;
+
+  &__content {
+    position: relative;
+    height: 100%;
+  }
 
   &__progress-bar{
     position: absolute;
@@ -60,7 +65,7 @@ html {
     border: black 1px solid;
     border-radius: 5px;
     padding: 3px 15px;
-    margin: 50px 15px 0 0;
+    margin-top: 50px;
     width: 175px;
     flex-basis: 40%;
 
@@ -90,6 +95,9 @@ html {
 }
 
 .score {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
 
   &__max-score {
     float: right;
