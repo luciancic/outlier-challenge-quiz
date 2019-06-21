@@ -1,13 +1,15 @@
 import questions from '../questions.json'
 
 export const initialState = {
+  currentQuestion: questions[0],
   currentRound: 1,
   playerAnswered: false,
   isAnswerCorrect: null,
   correctAnswers: 0,
   score: 100,
   minScore: 0,
-  maxScore: 100
+  maxScore: 100,
+  maxQuestions: questions.length
 }
 
 export function reducer (state, action) {
@@ -15,6 +17,7 @@ export function reducer (state, action) {
     case 'next_question':
       return {
         ...state,
+        currentQuestion: questions[state.currentRound + 1],
         playerAnswered: false,
         currentRound: state.currentRound + 1,
         isAnswerCorrect: null

@@ -15,7 +15,7 @@ import ScoreMeter from './ScoreMeter'
 
 function Quiz () {
   const [ quiz, dispatch ] = useReducer(reducer, initialState)
-  const q = questions[quiz.currentRound - 1]
+  const q = quiz.currentQuestion
 
   return <div className='quiz'>
     <TopProgressBar maxQuestions={questions.length} currentQuestion={quiz.currentRound} />
