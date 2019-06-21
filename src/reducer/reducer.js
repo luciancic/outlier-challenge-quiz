@@ -17,7 +17,7 @@ export function reducer (state, action) {
     case 'next_question':
       return {
         ...state,
-        currentQuestion: questions[state.currentRound + 1],
+        currentQuestion: questions[state.currentRound],
         playerAnswered: false,
         currentRound: state.currentRound + 1,
         isAnswerCorrect: null
