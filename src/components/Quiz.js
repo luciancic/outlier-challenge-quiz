@@ -17,19 +17,6 @@ function Quiz () {
   const [ quiz, dispatch ] = useReducer(reducer, initialState)
   const q = questions[quiz.currentRound - 1]
 
-  // function nextQuestion () {
-  //   setCurrentRound(currentRound + 1)
-  //   setAnswered(false)
-  //   setRoundCorrect(null)
-  // }
-  // function handleCorrect () {
-  //   setCorrectAnswers(correctAnswers + 1)
-  //   setRoundCorrect(true)
-  // }
-  // function handleIncorrect () {
-  //   setRoundCorrect(false)
-  // }
-
   return <div className='quiz'>
     <TopProgressBar maxQuestions={questions.length} currentQuestion={quiz.currentRound} />
     <QuestionCounter maxQuestions={questions.length} currentQuestion={quiz.currentRound} />
@@ -38,7 +25,6 @@ function Quiz () {
     <Question text={q.question} />
     <OptionSet
       answered={quiz.playerAnswered}
-      // setAnswered={setAnswered}
       correctAnswer={q.correct_answer}
       incorrectAnswers={q.incorrect_answers}
       handleCorrect={() => dispatch('answer_correct')}
