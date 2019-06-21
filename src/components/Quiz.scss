@@ -10,7 +10,9 @@ html {
 
 .quiz {
   height: 100vh;
-  padding: 2em 4em;
+  max-width: 570px;
+  padding: 2em 3em;
+  margin: auto;
 
   &__progress-bar{
     position: absolute;
