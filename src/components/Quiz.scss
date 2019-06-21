@@ -91,7 +91,11 @@ html {
     }
   }
 
-  
+  &__feedback {
+    text-align: center;
+    font-size: 1.8em;
+    font-weight: 600;
+  }
 }
 
 .score {
