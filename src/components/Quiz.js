@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react'
+import React, { useReducer } from 'react'
 import 'normalize.css'
 import './Quiz.scss'
 import TopProgressBar from './TopProgressBar'
@@ -9,7 +9,7 @@ import Question from './Question'
 import OptionSet from './OptionSet'
 import Feedback from './Feedback'
 import NextQuestion from './NextQuestion'
-// import ScoreMeter from './ScoreMeter'
+import ScoreMeter from './ScoreMeter'
 import questions from '../questions.json'
 
 function Quiz () {
@@ -28,15 +28,19 @@ function Quiz () {
           playerAnswered: true,
           isAnswerCorrect: true,
           correctAnswers: state.correctAnswers + 1,
-          score: getPercentage(state.correctAnswers + 1, questions.length)
+          score: getPercentage(state.correctAnswers + 1, state.currentRound),
+          minScore: getPercentage(state.correctAnswers + 1, questions.length)
         }
       case 'answer_incorrect':
         return {
           ...state,
           playerAnswered: true,
           isAnswerCorrect: false,
-          score: getPercentage(state.correctAnswers, state.currentRound)
+          score: getPercentage(state.correctAnswers, state.currentRound),
+          maxScore: getPercentage(questions.length - state.currentRound + state.correctAnswers, questions.length)
         }
+      default:
+        return state
     }
   }, {
     currentRound: 1,
@@ -82,7 +86,7 @@ function Quiz () {
       type={q.type} />
     { quiz.isAnswerCorrect !== null && <Feedback correct={quiz.isAnswerCorrect} /> }
     { quiz.playerAnswered && <NextQuestion handler={() => dispatch('next_question')} /> }
-    {/* <ScoreMeter maxRounds={questions.length} mistakes={mistakes} currentRound={currentRound} correctAnswers={correctAnswers} /> */}
+    <ScoreMeter score={quiz.score} minScore={quiz.minScore} maxScore={quiz.maxScore} />
   </div>
 }
 
