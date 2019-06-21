@@ -1,7 +1,6 @@
 import React, { useReducer } from 'react'
 import 'normalize.css'
 import './Quiz.scss'
-import questions from '../questions.json'
 import { reducer, initialState } from '../reducer/reducer'
 import TopProgressBar from './TopProgressBar'
 import QuestionCounter from './QuestionCounter'
